@@ -9,4 +9,4 @@ WORKDIR /opt/virtocommerce/platform
 
 COPY /install-modules.py .
 
-ENTRYPOINT ["python3", "/install-modules.py"]
+ENTRYPOINT ["python3", "install-modules.py"]
