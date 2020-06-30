@@ -16,15 +16,15 @@ jobs:
 
     steps:
     - name: Docker Login
-        uses: azure/docker-login@v1
-        with:
-            login-server: docker.pkg.github.com
-            username: $GITHUB_ACTOR
-            password: ${{ secrets.GITHUB_TOKEN }}
+      uses: azure/docker-login@v1
+      with:
+        login-server: docker.pkg.github.com
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and Publish Docker Image
-        shell: pwsh
-        run: |
-            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:latest"
-            docker build vc-platform-installer --tag $imageTag
-            docker push $imageTag
+      shell: pwsh
+      run: |
+        $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:latest"
+        docker build vc-platform-installer --tag $imageTag
+        docker push $imageTag
