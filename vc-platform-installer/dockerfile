@@ -8,3 +8,5 @@ RUN apt-get update -qq && apt-get install -y python3
 WORKDIR /opt/virtocommerce/platform
 
 COPY /install-modules.py .
+
+ENTRYPOINT ["python3", "/install-modules.py"]
