@@ -5,6 +5,7 @@ import urllib.request
 import json
 import zipfile
 import shutil
+import sys
 
 def getZipData(url):
     result = urllib.request.urlopen(url)
