@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+
+# Install unzip wget python3
+RUN apt-get update && apt-get install -y unzip
+RUN apt-get update -qq && apt-get install -y wget
+RUN apt-get update -qq && apt-get install -y python3
+
+WORKDIR /opt/virtocommerce/platform/Modules
+
+COPY install-modules.py .
+
+WORKDIR /opt/virtocommerce/platform
+
+ENTRYPOINT ["/install-modules.py"]
