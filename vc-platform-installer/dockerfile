@@ -11,4 +11,4 @@ COPY install-modules.py .
 
 WORKDIR /opt/virtocommerce/platform
 
-ENTRYPOINT ["/install-modules.py"]
+ENTRYPOINT ["/Modules/install-modules.py"]
