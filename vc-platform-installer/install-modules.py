@@ -12,6 +12,7 @@ def getZipData(url):
     return result.read()
 
 platformConfigUri = sys.argv[1]
+modulesFolder = sys.argv[2]
 
 with urllib.request.urlopen(platformConfigUri) as response, open('platform.json', 'wb') as out_file:
     shutil.copyfileobj(response, out_file)
@@ -21,7 +22,7 @@ with open('platform.json') as f:
     for module in config["Modules"]:
         moduleId = module["Id"]
         packageUrl = module["PackageUrl"]
-        destinationPath = "Modules/" + moduleId
+        destinationPath = modulesFolder + moduleId
         zipData = getZipData(packageUrl)
         zipRef = zipfile.ZipFile(io.BytesIO(zipData))
         zipRef.extractall(destinationPath)
