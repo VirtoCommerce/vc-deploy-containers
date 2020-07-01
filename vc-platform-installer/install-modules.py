@@ -26,4 +26,4 @@ with open('platform.json') as f:
         zipData = getZipData(packageUrl)
         zipRef = zipfile.ZipFile(io.BytesIO(zipData))
         zipRef.extractall(destinationPath)
-        print(moduleId, 'installed')
+        print(destinationPath, 'installed')
