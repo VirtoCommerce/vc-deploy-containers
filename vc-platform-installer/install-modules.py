@@ -12,8 +12,9 @@ def getZipData(url):
     return result.read()
 
 platformConfigUri = sys.argv[0]
-r = requests.get(platformConfigUri, allow_redirects=True)
-open('platform.json', 'wb').write(r.content)
+
+with urllib.request.urlopen(platformConfigUri) as response, open('platform.json', 'wb') as out_file:
+    shutil.copyfileobj(response, out_file)
 
 with open('platform.json') as f:
     config = json.load(f)
