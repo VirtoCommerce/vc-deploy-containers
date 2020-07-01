@@ -11,7 +11,7 @@ def getZipData(url):
     result = urllib.request.urlopen(url)
     return result.read()
 
-platformConfigUri = sys.argv[0]
+platformConfigUri = sys.argv[1]
 
 with urllib.request.urlopen(platformConfigUri) as response, open('platform.json', 'wb') as out_file:
     shutil.copyfileobj(response, out_file)
