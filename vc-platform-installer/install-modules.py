@@ -24,8 +24,8 @@ with open('platform.json') as f:
     config = json.load(f)
     for module in config["Modules"]:
         moduleId = module["Id"]
-        print('downloading', moduleId)
         packageUrl = module["PackageUrl"]
+        print('downloading', packageUrl)        
         destinationPath = modulesFolder + moduleId
         zipData = getZipData(packageUrl)
         zipRef = zipfile.ZipFile(io.BytesIO(zipData))
