@@ -21,7 +21,7 @@ with open('platform.json') as f:
     for module in config["Modules"]:
         moduleId = module["Id"]
         packageUrl = module["PackageUrl"]
-        destinationPath = moduleId
+        destinationPath = "Modules/" + moduleId
         zipData = getZipData(packageUrl)
         zipRef = zipfile.ZipFile(io.BytesIO(zipData))
         zipRef.extractall(destinationPath)
