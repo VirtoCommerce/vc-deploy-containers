@@ -17,12 +17,12 @@ modulesFolder = sys.argv[2]
 print("Downloading from", platformConfigUri)
 print("Destination folder", modulesFolder)
 
-with urllib.request.urlopen(platformConfigUri) as response, open('platform.json', 'wb') as out_file:
+with urllib.request.urlopen(platformConfigUri) as response, open('modules.json', 'wb') as out_file:
     shutil.copyfileobj(response, out_file)
 
-with open('platform.json') as f:
+with open('modules.json') as f:
     config = json.load(f)
-    for module in config["Modules"]:
+    for module in config:
         moduleId = module["Id"]
         packageUrl = module["PackageUrl"]
         print('downloading', packageUrl)        
