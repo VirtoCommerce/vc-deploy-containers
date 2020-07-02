@@ -4,6 +4,7 @@ import io
 import urllib.request
 import json
 import zipfile
+import os
 import shutil
 import sys
 
@@ -13,6 +14,17 @@ def getZipData(url):
 
 platformConfigUri = sys.argv[1]
 modulesFolder = sys.argv[2]
+
+print("Clearning up the destination folder", modulesFolder)
+for filename in os.listdir(modulesFolder):
+    file_path = os.path.join(modulesFolder, filename)
+    try:
+        if os.path.isfile(file_path) or os.path.islink(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+    except Exception as e:
+        print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 print("Downloading from", platformConfigUri)
 print("Destination folder", modulesFolder)
