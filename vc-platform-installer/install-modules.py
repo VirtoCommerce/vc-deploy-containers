@@ -15,7 +15,7 @@ def getZipData(url):
 platformConfigUri = sys.argv[1]
 modulesFolder = sys.argv[2]
 
-print("Clearning up the destination folder", modulesFolder)
+print("Clearing up the destination folder", modulesFolder)
 for filename in os.listdir(modulesFolder):
     file_path = os.path.join(modulesFolder, filename)
     try:
