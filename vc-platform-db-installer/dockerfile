@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/mssql-tools
+
+# Install unzip wget 
+RUN apt-get update && apt-get install -y unzip
+RUN apt-get update -qq && apt-get install -y wget
+
+# Install prerequisites for sqlpackage
+RUN apt-get install libunwind8
+# For Ubuntu 16.x
+RUN apt-get install libicu55
+
+# Download and unzip sqlpackage
+WORKDIR /opt/mssql-tools
+RUN wget -q "https://go.microsoft.com/fwlink/?linkid=2134311&clcid=0x409" -O sqlpackage.zip
+RUN unzip -q sqlpackage.zip -d /opt/mssql-tools/sqlpackage
+RUN rm sqlpackage.zip
+
+RUN echo "export PATH=\"\$PATH:/opt/mssql-tools/sqlpackage\"" >> ~/.bashrc 
+RUN chmod a+x /opt/mssql-tools/sqlpackage/sqlpackage
+
+WORKDIR /
