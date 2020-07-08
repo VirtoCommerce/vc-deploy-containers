@@ -18,4 +18,7 @@ RUN rm sqlpackage.zip
 RUN echo "export PATH=\"\$PATH:/opt/mssql-tools/sqlpackage\"" >> ~/.bashrc 
 RUN chmod a+x /opt/mssql-tools/sqlpackage/sqlpackage
 
+COPY /restore-db.sh .
+RUN chmod +x ./restore-db.sh
+
 WORKDIR /
