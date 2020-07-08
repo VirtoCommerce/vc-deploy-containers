@@ -1,4 +1,4 @@
-name: Build platform installer image
+name: Build platform db installer image
 
 on:
     push:
