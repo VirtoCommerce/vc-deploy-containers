@@ -9,4 +9,5 @@ RUN apt-get install -y wget
 WORKDIR /opt/virtocommerce/tools
 
 COPY /install-modules.py .
+
 COPY /install-theme.sh .
