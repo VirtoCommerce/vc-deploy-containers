@@ -5,7 +5,7 @@ THEME_LOCATION=$2
 
 if [ ! -d "$THEME_LOCATION" ]; then
     # Создать папку, только если ее не было
-    mkdir $DIR
+    mkdir -p $DIR
 fi
 
 wget -O theme.zip $THEME_URL
