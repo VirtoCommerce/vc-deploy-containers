@@ -4,7 +4,6 @@ THEME_URL=$1
 THEME_LOCATION=$2
 
 if [ ! -d "$THEME_LOCATION" ]; then
-    # Создать папку, только если ее не было
     mkdir -p $DIR
 fi
 
