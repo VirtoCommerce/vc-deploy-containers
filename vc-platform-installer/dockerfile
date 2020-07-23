@@ -4,11 +4,10 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 RUN apt-get update && apt-get install -y unzip
 RUN apt-get update -qq && apt-get install -y wget
 RUN apt-get update -qq && apt-get install -y python3
-RUN apt-get install -y npm
-RUN apt-get install -y git
-RUN npm install gulp -g
+RUN apt-get install -y wget
 
 WORKDIR /opt/virtocommerce/tools
 
 COPY /install-modules.py .
-COPY /build_theme.sh .
+
+COPY /install-theme.sh .
