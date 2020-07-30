@@ -11,3 +11,5 @@ WORKDIR /opt/virtocommerce/tools
 COPY /install-modules.py .
 
 COPY /install-theme.sh .
+
+COPY /upload-assets.sh .
