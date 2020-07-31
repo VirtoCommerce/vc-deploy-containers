@@ -8,5 +8,7 @@ if [ ! -d "$THEME_LOCATION" ]; then
 fi
 
 wget -O theme.zip $THEME_URL
-unzip theme.zip
-cp -rp default/* $THEME_LOCATION
+DOWNLOAD=$(date +%Y-%m-%d-%H-%M-%S).zip
+mv theme.zip $DOWNLOAD
+unzip $DOWNLOAD
+cp -rp $(ls -t -1r | tail -1)/* $THEME_LOCATION
