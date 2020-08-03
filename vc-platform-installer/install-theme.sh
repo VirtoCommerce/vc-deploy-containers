@@ -7,8 +7,8 @@ if [ ! -d "$THEME_LOCATION" ]; then
     mkdir -p "$THEME_LOCATION"
 fi
 
-wget -O theme.zip $THEME_URL
 DOWNLOAD=$(date +%Y-%m-%d-%H-%M-%S).zip
-mv theme.zip $DOWNLOAD
-unzip $DOWNLOAD
-cp -rp $(ls -t -1r | tail -1)/* $THEME_LOCATION
+wget -O $DOWNLOAD $THEME_URL
+mkdir temp
+unzip $DOWNLOAD -d temp
+cd temp && mv $(ls -td -- * | head -n 1) temp_theme && cp -rp temp_theme/* $THEME_LOCATION && cd .. && rm -rf temp
