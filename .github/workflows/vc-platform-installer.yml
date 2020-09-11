@@ -2,12 +2,12 @@ name: Build platform installer image
 
 on:
     push:
-        branches: [ master ]
+        branches: [ dev ]
         paths:
             - 'vc-platform-installer/**'
 
     pull_request:
-        branches: [ master ]
+        branches: [ dev ]
         paths:
             - 'vc-platform-installer/**'
   
@@ -29,6 +29,6 @@ jobs:
       - name: Build and Publish Docker Image
         shell: pwsh
         run: |
-            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:latest"
+            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:dev"
             docker build ${{ github.workspace }}/vc-platform-installer --tag $imageTag
             docker push $imageTag
