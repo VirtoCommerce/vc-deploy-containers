@@ -12,10 +12,9 @@ import threading
 
 ### 
 class Module:
-    def __init__(self, id, url, version):
+    def __init__(self, id, url):
         self.id = id
         self.url = url
-        self.version = version
 
 def getZipData(url):
     result = urllib.request.urlopen(url)
@@ -76,7 +75,7 @@ modules = []
 with open('modules.json') as f:
     config = json.load(f)
     for module in config:
-        modules.append(Module(module["Id"], getModuleUrl(module["Versions"]), getModuleVersion(module["Versions"])))
+        modules.append(Module(module["Id"], module["PackageUrl"]))
 
 checkInstalledModules(modules, modulesFolder)
 
