@@ -10,7 +10,7 @@ import sys
 import datetime
 import threading
 
-### Declarations
+### 
 class Module:
     def __init__(self, id, url, version):
         self.id = id
