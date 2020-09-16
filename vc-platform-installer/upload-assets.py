@@ -4,7 +4,7 @@ import os
 import urllib.request 
 import tqdm
 import zipfile 
-
+# test
 inputzipfile = sys.argv[1]
 assetsFolder = sys.argv[2]
 checkFolder = (assetsFolder + '/assets')
