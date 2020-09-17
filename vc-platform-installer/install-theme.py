@@ -5,15 +5,15 @@ import urllib.request
 import glob
 import shutil
 
-inputzipfile = sys.argv[1]
+themeUrl = sys.argv[1]
 themeFolder = sys.argv[2]
-installed_theme_file=(themeFolder + '/installed_theme.txt')
+installed_theme_file = os.path.join(themeFolder, 'installed_theme.txt')
 from zipfile import ZipFile
 
 def download_theme():
     print(datetime.datetime.now())
-    print('Downloading theme from:', inputzipfile)
-    url = inputzipfile
+    print('Downloading theme from:', themeUrl)
+    url = themeUrl
     urllib.request.urlretrieve(url, "theme.zip")
     print(datetime.datetime.now())
     print('Theme successfuly downloaded!')
@@ -23,7 +23,7 @@ def download_theme():
                 zipObject.extract(fileName, themeFolder)
                 print('Extraction...', fileName) 
     installed_theme = open(installed_theme_file, 'w')
-    text_for_file = inputzipfile
+    text_for_file = themeUrl
     installed_theme.write(text_for_file)
     os.remove('theme.zip')
 
@@ -45,7 +45,7 @@ def removing_old_theme(path):
 if(os.path.exists(installed_theme_file)):
     check_theme_version = open(installed_theme_file, 'r')
     current_version = check_theme_version.read()
-    if current_version != inputzipfile:
+    if current_version != themeUrl:
         removing_old_theme(themeFolder)
         download_theme() 
     else:
