@@ -37,4 +37,4 @@ jobs:
         run: |
             $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:${{ github.event.inputs.tag }}"
             docker build ${{ github.workspace }}/vc-platform-installer --tag $imageTag
-#            docker push $imageTag
+            docker push $imageTag
