@@ -1,6 +1,13 @@
 name: Build platform installer image
 
 on:
+    workflow_dispatch:
+        inputs:
+          tag:
+            description: 'Image tag'
+            required: false
+            default: 'latest'
+     
     push:
         branches: [ master ]
         paths:
@@ -29,6 +36,6 @@ jobs:
       - name: Build and Publish Docker Image
         shell: pwsh
         run: |
-            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:latest"
+            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:$(${{ github.event.inputs.name }})"
             docker build ${{ github.workspace }}/vc-platform-installer --tag $imageTag
-            docker push $imageTag
+#            docker push $imageTag
