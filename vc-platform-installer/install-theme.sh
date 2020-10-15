@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 THEME_URL=$1
 THEME_LOCATION=$2

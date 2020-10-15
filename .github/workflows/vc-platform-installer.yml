@@ -7,17 +7,7 @@ on:
             description: 'Image tag'
             required: false
             default: 'latest'
-     
-    push:
-        branches: [ master ]
-        paths:
-            - 'vc-platform-installer/**'
 
-    pull_request:
-        branches: [ master ]
-        paths:
-            - 'vc-platform-installer/**'
-  
 jobs:
     build:
       # The type of runner that the job will run on
