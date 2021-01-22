@@ -13,7 +13,7 @@ installed_assets_file = os.path.join(checkFolder, 'installed_assets.txt')
 from zipfile import ZipFile
 def download_assets():
     print(datetime.datetime.now())
-    print('Downloading theme from:', inputzipfile)
+    print('Downloading assets from:', inputzipfile)
     url = inputzipfile
     urllib.request.urlretrieve(url, "assets.zip")
     print(datetime.datetime.now())
