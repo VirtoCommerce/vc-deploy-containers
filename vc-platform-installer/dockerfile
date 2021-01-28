@@ -15,3 +15,5 @@ COPY /upload-assets.sh .
 COPY /upload-assets.py .
 
 COPY /install-theme.py .
+
+COPY /install-scripts.py .
