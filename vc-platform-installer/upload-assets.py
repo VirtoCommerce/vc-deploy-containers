@@ -21,7 +21,7 @@ def download_assets():
     with ZipFile('assets.zip', 'r') as zipObject:
         listOfFileNames = zipObject.namelist()
         for fileName in listOfFileNames:
-                zipObject.extract(fileName, assetsFolder)
+                zipObject.extract(fileName, checkFolder)
                 print('Extraction...', fileName) 
     installed_assets = open(installed_assets_file, 'w')
     text_for_file = inputzipfile
