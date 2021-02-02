@@ -1,7 +1,7 @@
 FROM python:alpine
 
 
-RUN apk add unzip wget \
+RUN apk add unzip wget gettext \
     && mkdir -p /mnt/Modules \
     && mkdir -p /mnt/cms-content \
     && pip install tqdm
