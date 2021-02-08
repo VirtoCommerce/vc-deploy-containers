@@ -28,6 +28,7 @@ def install():
                 log('{}{}'.format('Extraction...', fileName))
     installed_assets = open(installed_source, 'w')
     installed_assets.write(inputzipfile)
+    installed_assets.close()
     os.remove(zip_name)
 
 def removing_old_source(path):
@@ -53,6 +54,7 @@ installed_source = os.path.join(destination_folder, 'installed_source.txt')
 if(os.path.exists(installed_source)):
     check_assets_version = open(installed_source, 'r')
     current_version = check_assets_version.read()
+    check_assets_version.close()
     if current_version != inputzipfile:
         removing_old_source(destination_folder)
         install() 
