@@ -50,7 +50,7 @@ def removing_old_source(path):
 inputzipfile = sys.argv[1]
 destination_folder = sys.argv[2]
 
-if not os.path.exists(destination_folder): os.mkdir(destination_folder)
+if not os.path.exists(destination_folder): os.makedirs(destination_folder)
 installed_source = os.path.join(destination_folder, 'installed_source.txt')
 
 if(os.path.exists(installed_source)):
