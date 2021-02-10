@@ -61,7 +61,7 @@ if(os.path.exists(installed_source)):
         removing_old_source(destination_folder)
         install() 
     else:
-        log('{}{}'.format('Destination folder up to date', destination_folder))
+        log('{}{}'.format('Destination folder up to date ', destination_folder))
 else:
     removing_old_source(destination_folder)
     install()
