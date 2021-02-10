@@ -16,18 +16,18 @@ def unique_archive_name():
     return print('{}.zip'.format(exec_time[-6:-1]))
 
 def install():  
-    log('{}{}'.format('Downloading zip from:', inputzipfile))
+    log('{}{}'.format('Downloading zip from: ', inputzipfile))
     url = inputzipfile
     zip_name = '\"unique_archive_name()\"'
     urllib.request.urlretrieve(url, zip_name)
     log('Zip successfuly downloaded!')
-    log('{}{}'.format('Installing...', inputzipfile))
+    log('{}{}'.format('Installing... ', inputzipfile))
     with ZipFile(zip_name, 'r') as zipObject:
         listOfFileNames = zipObject.namelist()
         for fileName in listOfFileNames:
                 zipObject.extract(fileName, destination_folder)
-                #log('{}{}'.format('Extraction...', fileName))
-    log('{}{}'.format('Installing complete!', inputzipfile))
+                log('{}{}'.format('Extraction...', fileName))
+    log('{}{}'.format('Installing complete! ', inputzipfile))
     installed_assets = open(installed_source, 'w')
     installed_assets.write(inputzipfile)
     installed_assets.close()
