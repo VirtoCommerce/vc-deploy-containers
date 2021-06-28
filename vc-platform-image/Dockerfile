@@ -1,4 +1,4 @@
-FROM vc-build:stable as build
+FROM docker.pkg.github.com/virtocommerce/vc-deploy-containers/vc-build-image:stable as build
 
 RUN mkdir /platform
 
