@@ -4,7 +4,7 @@ RUN mkdir /platform
 
 COPY vc-package.json /platform 
 
-RUN cd /platform && /root/.dotnet/tools/vc-build install -SkipDependencySolving
+RUN cd /platform && /root/.dotnet/tools/vc-build install -SkipDependencySolving && /root/.dotnet/tools/vc-build initplatform
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 
