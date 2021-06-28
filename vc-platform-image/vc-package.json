@@ -94,6 +94,10 @@
       "Version": "3.6.0"
     },
     {
+      "Id": "VirtoCommerce.Sitemaps",
+      "Version": "3.7.0"
+    },
+    {
       "Id": "VirtoCommerce.Store",
       "Version": "3.18.0"
     },
@@ -128,14 +132,6 @@
     {
       "Id": "VirtoCommerce.EventBus",
       "Version": "1.1.0"
-    },
-    {
-      "Id": "VirtoCommerce.LuceneSearch",
-      "Version": "3.5.0"
-    },
-    {
-      "Id": "VirtoCommerce.CatalogCsvImportModule",
-      "Version": "3.21.0"
     }
   ]
 }
