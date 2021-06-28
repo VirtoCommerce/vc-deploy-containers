@@ -94,10 +94,6 @@
       "Version": "3.6.0"
     },
     {
-      "Id": "VirtoCommerce.Sitemaps",
-      "Version": "3.7.0"
-    },
-    {
       "Id": "VirtoCommerce.Store",
       "Version": "3.18.0"
     },
