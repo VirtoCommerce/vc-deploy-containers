@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/virtocommerce/vc-deploy-containers/vc-build-image:stable as build
+FROM ghcr.io/virtocommerce/vc-deploy-containers/vc-build-image:stable as build
 
 WORKDIR /platform
 
@@ -18,4 +18,4 @@ WORKDIR /opt/virtocommerce/platform
 
 ENTRYPOINT ["dotnet", "VirtoCommerce.Platform.Web.dll"]
 
-#For containerd
+#For containerd in k8s cluster
