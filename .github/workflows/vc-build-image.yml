@@ -22,13 +22,13 @@ jobs:
       - name: Docker Login
         uses: azure/docker-login@v1
         with:
-          login-server: docker.pkg.github.com
-          username: $GITHUB_ACTOR
-          password: ${{ secrets.GITHUB_TOKEN }}
+          login-server: ghcr.io
+          username: vc-ci
+          password: ${{ secrets.CONTAINER_REPO_TOKEN }}
 
       - name: Build and Publish Docker Image
         shell: pwsh
         run: |
-            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/vc-build-image:stable"
+            $imageTag = "ghcr.io/$('${{ github.repository }}'.ToLower())/vc-build-image:stable"
             docker build ${{ github.workspace }}/vc-build-image --tag $imageTag
             docker push $imageTag
