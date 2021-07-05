@@ -17,3 +17,5 @@ RUN apt-get update && apt-get install -y wget fontconfig libfreetype6 libx11-6 l
 WORKDIR /opt/virtocommerce/platform
 
 ENTRYPOINT ["dotnet", "VirtoCommerce.Platform.Web.dll"]
+
+#For containerd
