@@ -5,4 +5,4 @@ RUN dotnet tool install -g virtocommerce.globaltool \
 
 ENTRYPOINT [ "/root/.dotnet/tools/vc-build", "install" ]
 
-#For conatainerd
+#For conatainerd1

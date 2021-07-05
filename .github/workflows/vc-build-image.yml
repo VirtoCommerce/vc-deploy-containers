@@ -23,8 +23,8 @@ jobs:
         uses: azure/docker-login@v1
         with:
           login-server: ghcr.io
-          username: vc-ci
-          password: ${{ secrets.CONTAINER_REPO_TOKEN }}
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Publish Docker Image
         shell: pwsh
