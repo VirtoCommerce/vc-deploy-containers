@@ -43,7 +43,7 @@ jobs:
         run: |
             export PLATFORM_VERSION=$(cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion')
             echo $PLATFORM_VERSION
-            echo '::set-output name=PLATFORM_VERSION'
+            echo '::set-output name=PLATFORM_VERSION::$PLATFORM_VERSION'
 
       - name: What is platfrom version
         run: |
