@@ -26,6 +26,10 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: ls
+        run: |
+            ls ./
+
       - name: Build and Publish Docker Image
         shell: pwsh
         run: |
