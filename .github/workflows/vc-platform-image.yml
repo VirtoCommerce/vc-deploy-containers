@@ -1,6 +1,8 @@
 name: Build platform image
 
-on:
+on: 
+    workflow_dispatch:
+    
     push:
         branches: [ dev ]
         paths:
