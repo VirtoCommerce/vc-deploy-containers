@@ -42,21 +42,17 @@ jobs:
         id: platform-version
         run: |
             echo "PLATFORM_VERSION=$(cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion')" >> $GITHUB_ENV
-            
-      - name: What is platfrom version 
-        run: |
-            echo ${{ env.PLATFORM_VERSION }}
 
-      # - name: Docker Login
-      #   uses: azure/docker-login@v1
-      #   with:
-      #     login-server: ghcr.io
-      #     username: $GITHUB_ACTOR
-      #     password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker Login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ghcr.io
+          username: $GITHUB_ACTOR
+          password: ${{ secrets.GITHUB_TOKEN }}
       
-      # - name: Build and Publish Docker Image
-      #   shell: pwsh
-      #   run: |
-      #       $imageTag = "ghcr.io/$('${{ github.repository }}'.ToLower())/vc-platform-image:stable"
-      #       docker build ${{ github.workspace }}/vc-platform-image --tag $imageTag
-      #       docker push $imageTag
+      - name: Build and Publish Docker Image
+        shell: pwsh
+        run: |
+            $imageTag = "ghcr.io/$('${{ github.repository }}'.ToLower())/vc-platform-image:${{ env.PLATFORM_VERSION }}-stable"
+            docker build ${{ github.workspace }}/vc-platform-image --tag $imageTag
+            docker push $imageTag
