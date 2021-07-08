@@ -43,8 +43,7 @@ jobs:
         run: |
             echo "PLATFORM_VERSION=$(cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion')" >> $GITHUB_ENV
             
-      - name: What is platfrom version
-        env:  
+      - name: What is platfrom version 
         run: |
             echo {{ env.PLATFORM_VERSION }}
 
