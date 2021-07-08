@@ -41,13 +41,13 @@ jobs:
       - name: Get platfrom version
         id: platform-version
         run: |
-            export PLATFORM-VERSION=$(cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion')
-            echo $PLATFORM-VERSION
-            echo '::set-output name=PLATFORM-VERSION'
+            export PLATFORM_VERSION=$(cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion')
+            echo $PLATFORM_VERSION
+            echo '::set-output name=PLATFORM_VERSION'
 
       - name: What is platfrom version
         run: |
-            echo "Platform version is ${{ steps.platform-version.outputs.PLATFORM-VERSION }}"
+            echo "Platform version is ${{ steps.platform-version.outputs.PLATFORM_VERSION }}"
 
       - name: Docker Login
         uses: azure/docker-login@v1
