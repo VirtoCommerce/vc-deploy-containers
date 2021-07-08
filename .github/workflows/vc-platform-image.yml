@@ -38,9 +38,11 @@ jobs:
               sudo dpkg -L jq | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/jq/
             fi
 
-      - name: ls
+      - name: Get platfrom version
+        id: platform-version
         run: |
-            ls ~/
+            cat ./vc-platform-image/vc-package.json | jq -r '.PlatformVersion'
+            echo '::set-output name=PLATFORM-VERSION'
 
       - name: Docker Login
         uses: azure/docker-login@v1
