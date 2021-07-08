@@ -24,6 +24,7 @@ jobs:
         id: cache-jq
         with:
             path: "~/jq"
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Install jq
         env:
