@@ -1,5 +1,5 @@
 {
-  "PlatformVersion": "3.65.0",
+  "PlatformVersion": "3.69.0",
   "PlatformAssetUrl": "",
   "ModuleSources": [
     "https://raw.githubusercontent.com/VirtoCommerce/vc-modules/master/modules_v3.json"
@@ -23,7 +23,7 @@
     },
     {
       "Id": "VirtoCommerce.Catalog",
-      "Version": "3.43.0"
+      "Version": "3.50.0"
     },
     {
       "Id": "VirtoCommerce.Content",
@@ -31,7 +31,7 @@
     },
     {
       "Id": "VirtoCommerce.CatalogPersonalization",
-      "Version": "3.9.0"
+      "Version": "3.10.0"
     },
     {
       "Id": "VirtoCommerce.CatalogPublishing",
@@ -39,7 +39,7 @@
     },
     {
       "Id": "VirtoCommerce.Core",
-      "Version": "3.17.0"
+      "Version": "3.18.0"
     },
     {
       "Id": "VirtoCommerce.Customer",
@@ -51,11 +51,11 @@
     },
     {
       "Id": "VirtoCommerce.ElasticSearch",
-      "Version": "3.6.0"
+      "Version": "3.7.0"
     },
     {
       "Id": "VirtoCommerce.ImageTools",
-      "Version": "3.12.0"
+      "Version": "3.13.0"
     },
     {
       "Id": "VirtoCommerce.Inventory",
@@ -63,15 +63,15 @@
     },
     {
       "Id": "VirtoCommerce.Marketing",
-      "Version": "3.25.0"
+      "Version": "3.26.0"
     },
     {
       "Id": "VirtoCommerce.Notifications",
-      "Version": "3.17.0"
+      "Version": "3.18.0"
     },
     {
       "Id": "VirtoCommerce.Orders",
-      "Version": "3.32.0"
+      "Version": "3.34.0"
     },
     {
       "Id": "VirtoCommerce.Payment",
@@ -87,7 +87,7 @@
     },
     {
       "Id": "VirtoCommerce.Search",
-      "Version": "3.13.0"
+      "Version": "3.14.0"
     },
     {
       "Id": "VirtoCommerce.Shipping",
@@ -111,7 +111,7 @@
     },
     {
       "Id": "VirtoCommerce.PriceExportImport",
-      "Version": "1.1.0"
+      "Version": "1.2.0"
     },
     {
       "Id": "VirtoCommerce.Export",
@@ -119,7 +119,7 @@
     },
     {
       "Id": "VirtoCommerce.ExperienceApi",
-      "Version": "1.16.0"
+      "Version": "1.18.0"
     },
     {
       "Id": "VirtoCommerce.FeatureManagement",
