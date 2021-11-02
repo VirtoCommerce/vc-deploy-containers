@@ -18,4 +18,6 @@ COPY /install-theme.py .
 
 COPY /install-scripts.py .
 
+COPY /private-installer.py .
+
 COPY /installer.py .
