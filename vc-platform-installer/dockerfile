@@ -4,7 +4,8 @@ FROM python:alpine
 RUN apk add unzip wget gettext \
     && mkdir -p /mnt/Modules \
     && mkdir -p /mnt/cms-content \
-    && pip install tqdm
+    && pip install tqdm \
+    && python3 -m pip install requests
 
 COPY /install-modules.py .
 
