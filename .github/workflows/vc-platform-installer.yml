@@ -35,6 +35,6 @@ jobs:
       - name: Build and Publish Docker Image
         shell: pwsh
         run: |
-            $imageTag = "docker.pkg.github.com/$('${{ github.repository }}'.ToLower())/platform-installer:${{ github.event.inputs.tag }}"
+            $imageTag = "ghcr.io/$('${{ github.repository }}'.ToLower())/platform-installer:${{ github.event.inputs.tag }}"
             docker build ${{ github.workspace }}/vc-platform-installer --tag $imageTag
             docker push $imageTag
