@@ -45,7 +45,10 @@ def main():
         tag = target.get('Tag')
         destination = target.get('Destination')
         source_type = target.get('Type')
-        get_url = f'https://api.github.com/repos/{repository}/releases/tags/{tag}'
+        if tag == 'latest':
+            get_url = f'https://api.github.com/repos/{repository}/releases/latest'
+        else:
+            get_url = f'https://api.github.com/repos/{repository}/releases/tags/{tag}'
         release = requests.get(get_url, headers=get_headers)
         log('{}'.format('Downloading... '))
         download = requests.get(release.json()['assets'][0]['url'], headers=download_headers, stream=True)
