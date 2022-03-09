@@ -1,0 +1,70 @@
+name: Build and Publish platform image
+
+on: 
+    push:
+        branches: [ qa ]
+        paths:
+            - 'platform-image/**'
+
+    pull_request:
+        branches: [ qa ]
+        paths:
+            - 'platform-image/**'
+  
+jobs:
+    build:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache jq
+        uses: actions/cache@v2
+        id: cache-jq
+        with:
+            path: "~/jq"
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Install jq
+        env:
+          CACHE_HIT: ${{steps.cache-jq.outputs.cache-hit}}
+        run: |
+            if [[ "$CACHE_HIT" == 'true' ]]; then
+              sudo cp --verbose --force --recursive ~/jq/* /
+            else
+              sudo apt-get install jq
+              mkdir -p ~/jq
+              sudo dpkg -L jq | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/jq/
+            fi
+
+      - name: Get platfrom version
+        id: platform-version
+        run: |
+            echo "PLATFORM_VERSION=$(cat ./platform-image/packages.json | jq -r '.PlatformVersion')" >> $GITHUB_ENV
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+    
+      - name: Install vc-build
+        id: vcbuild
+        run: |
+            dotnet tool install -g virtocommerce.globaltool --version 2.4.0
+      
+      - name: Pack
+        id: pack
+        run: |
+            vc-build install -GithubToken ${{ secrets.GH_TOKEN }} -PackageManifestPath ./platform-image/packages.json -ProbingPath ./backend/platform/app_data/modules -DiscoveryPath ./backend/platform/modules --root ./backend/platform -SkipDependencySolving
+
+      - name: Build and Publish Docker Image
+        env:
+          DOCKER_LOGIN: vccom
+          DOCKER_PASSWORD: ${{ secrets.VCCOM_ACR_DOCKER_PASSWORD }}
+          DOCKERFILE_PATH: ./platform-image/Dockerfile
+          CONTAINER_REGISTRY: virtopaasregistry.azurecr.io
+          IMAGE_REPOSITORY: ${{ env.CONTAINER_REGISTRY }}/vccom/platform
+          TAG: ${{ env.PLATFORM_VERSION }}-${{ steps.vars.outputs.sha_short }}
+        id: build
+        run: |
+            vc-build BuildAndPush -DockerUsername $DOCKER_LOGIN -DockerPassword $DOCKER_PASSWORD -DockerfilePath $DOCKERFILE_PATH -DockerImageName $IMAGE_REPOSITORY -DockerImageTag $TAG -DockerRegistryUrl $CONTAINER_REGISTRY
