@@ -6,7 +6,7 @@ COPY vc-package.json /platform
 
 RUN /root/.dotnet/tools/vc-build install -SkipDependencySolving && /root/.dotnet/tools/vc-build initplatform
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
 COPY --from=build platform /opt/virtocommerce/platform
 COPY YamlDotNet.dll /opt/virtocommerce/platform/app_data/modules
