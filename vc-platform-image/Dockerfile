@@ -18,4 +18,4 @@ WORKDIR /opt/virtocommerce/platform
 
 ENTRYPOINT ["dotnet", "VirtoCommerce.Platform.Web.dll"]
 
-#For containerd in k8s cluster
+#For containerd in k8s cluster!!
