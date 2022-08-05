@@ -4,6 +4,10 @@ import os
 import urllib.request 
 import glob
 import shutil
+from distutils.dir_util import copy_tree
+
+pageBuilderPath = '/content/'
+tmpPath = '/tmp/page-builder-theme/'
 
 themeUrl = sys.argv[1]
 themeFolder = sys.argv[2]
@@ -27,6 +31,16 @@ def download_theme():
     installed_theme.write(text_for_file)
     os.remove('theme.zip')
 
+def copy_content(from_path, to_path):
+    print(datetime.datetime.now())
+    print('Copying Page Builder content...')
+    from_folder = os.path.join(from_path, pageBuilderPath)
+    to_folder = os.path.join(to_path, pageBuilderPath)
+    if(os.path.exists(from_folder)):
+        copy_tree(from_folder, to_folder)
+        print(datetime.datetime.now())
+        print('Copying complete')
+
 def removing_old_theme(path):
     print(datetime.datetime.now())
     print('Removing old theme...')
@@ -46,8 +60,11 @@ if(os.path.exists(installed_theme_file)):
     check_theme_version = open(installed_theme_file, 'r')
     current_version = check_theme_version.read()
     if current_version != themeUrl:
+        copy_content(themeFolder, tmpPath)
         removing_old_theme(themeFolder)
         download_theme() 
+        copy_content(tmpPath, themeFolder)
+        removing_old_theme(themeFolder)
     else:
         print('Theme up to date')
 else:
