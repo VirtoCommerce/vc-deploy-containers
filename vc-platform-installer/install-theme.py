@@ -64,7 +64,7 @@ if(os.path.exists(installed_theme_file)):
         removing_old_theme(themeFolder)
         download_theme() 
         copy_content(tmpPath, themeFolder)
-        removing_old_theme(themeFolder)
+        removing_old_theme(tmpPath)
     else:
         print('Theme up to date')
 else:
