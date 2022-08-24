@@ -6,7 +6,7 @@ import glob
 import shutil
 from distutils.dir_util import copy_tree
 
-pageBuilderPath = '/content/'
+pageBuilderPath = 'content/'
 tmpPath = '/tmp/page-builder-theme/'
 
 themeUrl = sys.argv[1]
