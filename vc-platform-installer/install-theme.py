@@ -5,9 +5,11 @@ import urllib.request
 import glob
 import shutil
 from distutils.dir_util import copy_tree
+from distutils.file_util import copy_file
 
 pageBuilderPath = 'content/'
 tmpPath = '/tmp/page-builder-theme/'
+settingsPath = 'config/settings_data.json'
 
 themeUrl = sys.argv[1]
 themeFolder = sys.argv[2]
@@ -40,6 +42,9 @@ def copy_content(from_path, to_path):
         copy_tree(from_folder, to_folder)
         print(datetime.datetime.now())
         print('Copying complete')
+    settingsFileFrom = os.path.join(from_path, settingsPath)
+    settingsFileTo = os.path.join(to_path, settingsPath)
+    copy_file(settingsFileFrom, settingsFileTo)
 
 def removing_old_theme(path):
     print(datetime.datetime.now())
